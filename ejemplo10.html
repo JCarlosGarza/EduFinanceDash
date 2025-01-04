@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+         body {
+                background-color: black;
+                color: white;
+                font-family: 'Roboto', sans-serif; /* Applying custom font */
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                min-height: 100vh;
+                margin: 0;
+            }
+            h1 {
+                text-align: center;
+            }
+            h2 {
+                font-size: 36px;
+                margin: 100; /* Remove margin */
+                padding: 0; /* Remove padding */
+                text-align: center;
+            }
+            h3 {
+                font-size: 22px;
+                text-align: center;
+            }
+            .main-container, .container, .row {
+                background-color: black; /* Fondo morado oscuro */
+                border-radius: 10px;
+                margin: 20px auto;
+                padding: 20px;
+                max-width: 1000px;
+            }
+            .main-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .main-container input[type="date"], 
+            .main-container textarea,
+            .main-container button {
+                margin: 10px 0;
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+                width: 100%;
+                max-width: 300px;
+            }
+            .main-container button {
+                background-color: blue;
+                color: white;
+                cursor: pointer;
+            }
+            .main-container button:hover {
+                background-color: darkblue;
+            }
+            .calendar {
+                width: 100%;
+                max-width: 800px;
+                margin: 20px auto;
+            }
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .col-3, .col-2, .col-4, .col-8 {
+                padding: 20px;
+            }
+            .col-3 {
+                width: calc(33.33% - 40px); /* Tres columnas con espacio entre recuadros */
+            }
+            .col-2 {
+                width: calc(50% - 40px); /* Dos columnas con espacio entre recuadros */
+            }
+            .col-4 {
+                width: calc(25% - 40px); /* Cuatro columnas con espacio entre recuadros */
+            }
+            .col-8 {
+                width: calc(20% - 40px); /* Cuatro columnas con espacio entre recuadros */
+            }
+            .box {
+                text-align: center;
+            }
+            .box img {
+                max-width: 100%;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            .box p {
+                font-size: 16px;
+                margin: 10px 0;
+            }
+    
+            .text-box {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .concept-list {
+                list-style: none;
+                padding: 0;
+            }
+            .concept-list li {
+                margin: 5px 0;
+                font-size: 16px;
+            }
+    
+            .box button {
+                background-color: blue; /* Button background color */
+                color: white; /* Button text color */
+                padding: 10px 20px; /* Button padding */
+                border: none; /* Remove border */
+                border-radius: 5px; /* Rounded corners */
+                font-size: 16px; /* Font size */
+                cursor: pointer; /* Pointer cursor on hover */
+                margin-top: 20px; /* Space above the button */
+                align-content: center;
+            }
+            .box button:hover {
+                background-color: darkblue;
+            }
+            .text {
+                margin-top: 10px; /* Space between image and text */
+            }
+            .text.small {
+                font-size: 14px; /* Small font size */
+            }
+            .text.medium {
+                font-size: 18px; /* Medium font size */
+            }
+            
+            
+            .newsletter {
+                background-color: black;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: left;
+                margin-top: 20px;
+            }
+            .newsletter h3 {
+                margin-top: 0;
+            }
+            .newsletter input[type="email"] {
+                width: calc(100% - 30px);
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .newsletter button {
+                background-color: blue;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .newsletter button:hover {
+                background-color: white;
+            }
+            .footer-container {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                max-width: 1200px;
+                margin-top: 20px;
+            }
+            .footer-column {
+                flex: 1;
+                background-color: black;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 10px;
+                text-align: left;
+            }
+            .footer-column h3 {
+                color: white;
+                margin-bottom: 10px;
+            }
+            .footer-column p, .footer-column a {
+                color: white;
+                font-size: 16px;
+                margin: 5px 0;
+            }
+            .footer-column a {
+                text-decoration: none;
+            }
+            .footer-column a:hover {
+                text-decoration: underline;
+            }
+    
+            .list-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .list-item img {
+                margin-left: 10px;
+                width: 50px;
+                height: 50px;
+            }
+            .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 0 auto;
+            }
+            .column {
+                flex: 1;
+                margin: 10px;
+                padding: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .image {
+                width: 100%;
+                height: auto;
+            }
+            .text-button {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .text-button button {
+                margin-top: 10px;
+            }
+            .box button {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+            }
+            .box button:hover {
+                background-color: darkblue;
+            }
+            .text-button {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            }
+            .text-button input[type="text"],
+            .text-button input[type="date"] {
+                margin-top: 10px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 15px;
+                background: rgba(128, 0, 128, 0.5);
+                color: rgb(111, 66, 108);
+                transition: background 0.3s;
+            }
+            .text-button input[type="text"]:focus,
+            .text-button input[type="date"]:focus {
+                background: rgba(128, 0, 128, 0.8);
+                outline: none;
+            }
+            .text-button p {
+                margin-bottom: 10px;
+            }
+            .textarea {
+            border: 1px solid #4a1049;
+            border-radius: 15px;
+            background: rgba(128, 0, 128, 0.5);
+            color: rgb(69, 26, 77);
+            transition: background 0.3s;
+            }
+            .textarea:focus {
+                background: rgba(128, 0, 128, 0.8);
+                outline: none;
+            }
+
+            .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            }
+            .rating input {
+            display: none;
+            }
+            .rating label {
+            font-size: 36px;
+            color: #ccc;
+            padding: 0 5px;
+            cursor: pointer;
+            transition: color 0.3s;
+            }
+            .rating input:checked ~ label,
+            .rating label:hover,
+            .rating label:hover ~ label {
+                color: gold;
+            }
+
+    </style>
+    <title>Contenedor con 3 Columnas</title>
+</head>
+<body>
+    <a href="ejemplo9.html">BACK</a>
+    <a href="ejemplo11.html">NEXT</a>
+    <h1 style="font-size:400%;">Time Value of Money</h1>
+    <h3>Explore the exciting world of investments and learn how to make your money work for you from a young age!</h3>
+
+    <div class="container">
+        <div class="col-3">
+            <img src="trans/rgi45.png" alt="Imagen 1" class="image">
+            <h3>Take a step</h3>
+            <button onclick="toggleInput('dateField')">Date</button>
+        </div>
+        <div class="col-3">
+            <img src="trans/rgi46.png" alt="Imagen 2" class="image">
+            <h3>towards</h3>
+            <button onclick="toggleInput('dateField')">Date</button>
+        </div>
+        <div class="col-3">
+            <img src="trans/rgi47.png" alt="Imagen 2" class="image">
+            <h3>your goal</h3>
+            <button onclick="toggleInput('dateField')">Date</button>
+        </div>
+
+        
+        <div class="container">
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+        </div>
+
+        <div class="container">
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+        </div>
+
+        <div class="container">
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+        </div>
+
+        <div class="container">
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+            <textarea  class="textarea" placeholder=""></textarea>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <div class="col-3">
+            <h2>Basic Financial Concepts</h2>
+        </div>
+        <div class="col-3">
+            <h3>Money and its uses
+                Saving vs. spending
+                Needs vs. wants
+                Budgeting basics</h3>
+        </div>
+        <div class="rating">
+            <input type="radio" name="rating1" id="star1-1" value="1"><label for="star1-1">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-2" value="2"><label for="star1-2">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-3" value="3"><label for="star1-3">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-4" value="4"><label for="star1-4">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-5" value="5"><label for="star1-5">&#9733;</label>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-3">
+            <h2>Banking and Saving</h2>
+        </div>
+        <div class="col-3">
+            <h3>Introduction to banks and credit unions
+                Opening a savings account
+                Understanding interest rates
+                Importance of saving money</h3>
+        </div>
+        <div class="rating">
+            <input type="radio" name="rating1" id="star1-1" value="1"><label for="star1-1">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-2" value="2"><label for="star1-2">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-3" value="3"><label for="star1-3">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-4" value="4"><label for="star1-4">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-5" value="5"><label for="star1-5">&#9733;</label>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-3">
+            <h2>Investing</h2>
+        </div>
+        <div class="col-3">
+            <h3>Introduction to investing
+                Types of investments
+                Risk vs. return
+                Long-term vs. short-term investing</h3>
+        </div>
+        <div class="rating">
+            <input type="radio" name="rating1" id="star1-1" value="1"><label for="star1-1">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-2" value="2"><label for="star1-2">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-3" value="3"><label for="star1-3">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-4" value="4"><label for="star1-4">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-5" value="5"><label for="star1-5">&#9733;</label>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-3">
+            <h2>Credit and Debit</h2>
+        </div>
+        <div class="col-3">
+            <h3>Understanding credit cards
+                Managing debt responsibly
+                Credit scores and reports</h3>
+        </div>
+        <div class="rating">
+            <input type="radio" name="rating1" id="star1-1" value="1"><label for="star1-1">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-2" value="2"><label for="star1-2">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-3" value="3"><label for="star1-3">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-4" value="4"><label for="star1-4">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-5" value="5"><label for="star1-5">&#9733;</label>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-3">
+            <h2>Financial Planning</h2>
+        </div>
+        <div class="col-3">
+            <h3>Setting financial goals
+                Planning for expenses (your goals)
+                Emergency funds</h3>
+        </div>
+        <div class="rating">
+            <input type="radio" name="rating1" id="star1-1" value="1"><label for="star1-1">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-2" value="2"><label for="star1-2">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-3" value="3"><label for="star1-3">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-4" value="4"><label for="star1-4">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-5" value="5"><label for="star1-5">&#9733;</label>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-3">
+            <h2>Financial Responsibility</h2>
+        </div>
+        <div class="col-3">
+            <h3>Giving back (e.g., charity, donations)
+                Sharing and budgeting with others
+                Being responsible with money</h3>
+        </div>
+        <div class="rating">
+            <input type="radio" name="rating1" id="star1-1" value="1"><label for="star1-1">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-2" value="2"><label for="star1-2">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-3" value="3"><label for="star1-3">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-4" value="4"><label for="star1-4">&#9733;</label>
+            <input type="radio" name="rating1" id="star1-5" value="5"><label for="star1-5">&#9733;</label>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleInput(id) {
+            const inputField = document.getElementById(id);
+            if (inputField.style.display === 'none' || inputField.style.display === '') {
+                inputField.style.display = 'block';
+            } else {
+                inputField.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

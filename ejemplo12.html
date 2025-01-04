@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif, 'Roboto'; /* Applying custom font */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            font-size: 36px;
+            margin: 100; /* Remove margin */
+            padding: 0; /* Remove padding */
+        }
+        h3 {
+            font-size: 22px;
+            text-align: center;
+            color: white;
+        }
+        .main-container, .container, .row {
+            background-color: black; /* Fondo morado oscuro */
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-container input[type="date"], 
+        .main-container textarea,
+        .main-container button {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+        .main-container button {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        .main-container button:hover {
+            background-color: darkblue;
+        }
+        .calendar {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .col-3, .col-2, .col-4, .col-5 {
+            padding: 20px;
+        }
+        .col-3 {
+            width: calc(33.33% - 40px); /* Tres columnas con espacio entre recuadros */
+        }
+        .col-2 {
+            width: calc(50% - 40px); /* Dos columnas con espacio entre recuadros */
+        }
+        .col-4 {
+            width: calc(25% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .col-5 {
+            width: calc(20% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .box {
+            text-align: center;
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .box p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .text-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .concept-list {
+            list-style: none;
+            padding: 0;
+        }
+        .concept-list li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .box button {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+        }
+        .box button:hover {
+            background-color: darkblue;
+        }
+        .text {
+            margin-top: 10px; /* Space between image and text */
+        }
+        .text.small {
+            font-size: 14px; /* Small font size */
+        }
+        .text.medium {
+            font-size: 18px; /* Medium font size */
+        }
+        
+        
+        .newsletter {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .newsletter h3 {
+            margin-top: 0;
+        }
+        .newsletter input[type="email"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background-color: white;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            background-color: black;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .footer-column p, .footer-column a {
+            color: white;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .footer-column a {
+            text-decoration: none;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+        .buttons {
+            display: flex;
+            margin-top: 10px;
+        }
+        .buttons button {
+            padding: 15px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #800080;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #4b004b;
+        }
+        .buttons button.selected {
+            background-color: #4b004b;
+        }
+        #chartContainer {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .row1 .col {
+            flex: 1;
+        }
+        .arrows {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+        .arrows div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        .arrow {
+            font-size: 24px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .arrow.up {
+            color: green;
+        }
+        .arrow.down {
+            color: red;
+        }
+
+
+    </style>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2024-07-01'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2024-07-02'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <a href="ejemplo11.html">BACK</a>
+    <a href="ejemplo.html">NEXT</a>
+    <h1 style="font-size:400%;">Savings, Costs and Spending</h1>
+    <h3>Discover the power of saving, investing, and planning to build a strong and happy financial future</h3>
+
+    <h3>How many people do you think you'll need in your team to achieve your goal? </h3>
+    <div class="container">
+        <div class="buttons">
+            <button onclick="selectOption(this)">Candies</button>
+            <button onclick="selectOption(this)">Stores</button>
+            <button onclick="selectOption(this)">Credit Card</button>
+            <button onclick="selectOption(this)">Debit Card</button>
+            <button onclick="selectOption(this)">Cash</button>
+        </div>
+    </div>
+
+
+
+    <div id="chartContainer">
+        <h2>Savings</h2>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function selectOption(button) {
+            const buttons = button.parentElement.querySelectorAll('button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        }
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+                datasets: [{
+                    label: 'Datos de ejemplo',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+<div class="main-container">
+    <!-- Primera fila con 5 columnas de texto -->
+    <div class="container">
+        <div class="col-5">
+            <div class="box">
+                <h3>Candies</h3>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <h3>Stores</h3>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <h3>Credit Card</h3>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <h3>Debit Card</h3>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <h3>Cash</h3>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Segunda fila con flechas rojas y verdes -->
+    <div class="row arrows">
+        <div>
+            <div class="arrow up">&#9650;</div>
+        </div>
+        <div>
+            <div class="arrow down">&#9660;</div>
+        </div>
+        <div>
+            <div class="arrow up">&#9650;</div>
+        </div>
+        <div>
+            <div class="arrow up">&#9650;</div>
+        </div>
+        <div>
+            <div class="arrow down">&#9660;</div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="selectOption(this)">Candies</button>
+        <button onclick="selectOption(this)">Stores</button>
+        <button onclick="selectOption(this)">Credit Card</button>
+        <button onclick="selectOption(this)">Debit Card</button>
+        <button onclick="selectOption(this)">Cash</button>
+    </div>
+    
+
+</div>
+
+
+
+
+
+
+
+<div id="chartContainer">
+    <h2>Costs</h2>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function selectOption(button) {
+        const buttons = button.parentElement.querySelectorAll('button');
+        buttons.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+    }
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+            datasets: [{
+                label: 'Datos de ejemplo',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<div class="main-container">
+<!-- Primera fila con 5 columnas de texto -->
+<div class="container">
+    <div class="col-5">
+        <div class="box">
+            <h3>Candies</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Stores</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Credit Card</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Debit Card</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Cash</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Segunda fila con flechas rojas y verdes -->
+<div class="row arrows">
+    <div>
+        <div class="arrow up">&#9650;</div>
+    </div>
+    <div>
+        <div class="arrow down">&#9660;</div>
+    </div>
+    <div>
+        <div class="arrow up">&#9650;</div>
+    </div>
+    <div>
+        <div class="arrow up">&#9650;</div>
+    </div>
+    <div>
+        <div class="arrow down">&#9660;</div>
+    </div>
+</div>
+
+<div class="buttons">
+    <button onclick="selectOption(this)">Candies</button>
+    <button onclick="selectOption(this)">Stores</button>
+    <button onclick="selectOption(this)">Credit Card</button>
+    <button onclick="selectOption(this)">Debit Card</button>
+    <button onclick="selectOption(this)">Cash</button>
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div id="chartContainer">
+    <h2>Spending</h2>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function selectOption(button) {
+        const buttons = button.parentElement.querySelectorAll('button');
+        buttons.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+    }
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+            datasets: [{
+                label: 'Datos de ejemplo',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<div class="main-container">
+<!-- Primera fila con 5 columnas de texto -->
+<div class="container">
+    <div class="col-5">
+        <div class="box">
+            <h3>Candies</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Stores</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Credit Card</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Debit Card</h3>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="box">
+            <h3>Cash</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Segunda fila con flechas rojas y verdes -->
+<div class="row arrows">
+    <div>
+        <div class="arrow up">&#9650;</div>
+    </div>
+    <div>
+        <div class="arrow down">&#9660;</div>
+    </div>
+    <div>
+        <div class="arrow up">&#9650;</div>
+    </div>
+    <div>
+        <div class="arrow up">&#9650;</div>
+    </div>
+    <div>
+        <div class="arrow down">&#9660;</div>
+    </div>
+</div>
+
+<div class="buttons">
+    <button onclick="selectOption(this)">Candies</button>
+    <button onclick="selectOption(this)">Stores</button>
+    <button onclick="selectOption(this)">Credit Card</button>
+    <button onclick="selectOption(this)">Debit Card</button>
+    <button onclick="selectOption(this)">Cash</button>
+</div>
+
+
+</div>
+</body>
+</html>

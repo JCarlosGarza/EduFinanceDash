@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif, 'Roboto'; /* Applying custom font */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            font-size: 36px;
+            margin: 100; /* Remove margin */
+            padding: 0; /* Remove padding */
+        }
+        h3 {
+            font-size: 22px;
+            text-align: center;
+        }
+        .main-container, .container, .row {
+            background-color: black; /* Fondo morado oscuro */
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-container input[type="date"], 
+        .main-container textarea,
+        .main-container button {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+        .main-container button {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        .main-container button:hover {
+            background-color: darkblue;
+        }
+        .calendar {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .col-3, .col-2, .col-4, .col-8 {
+            padding: 20px;
+        }
+        .col-3 {
+            width: calc(33.33% - 40px); /* Tres columnas con espacio entre recuadros */
+        }
+        .col-2 {
+            width: calc(50% - 40px); /* Dos columnas con espacio entre recuadros */
+        }
+        .col-4 {
+            width: calc(25% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .col-8 {
+            width: calc(20% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .box {
+            text-align: center;
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .box p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .text-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .concept-list {
+            list-style: none;
+            padding: 0;
+        }
+        .concept-list li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .box button {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+        }
+        .box button:hover {
+            background-color: darkblue;
+        }
+        .text {
+            margin-top: 10px; /* Space between image and text */
+        }
+        .text.small {
+            font-size: 14px; /* Small font size */
+        }
+        .text.medium {
+            font-size: 18px; /* Medium font size */
+        }
+        
+        
+        .newsletter {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .newsletter h3 {
+            margin-top: 0;
+        }
+        .newsletter input[type="email"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background-color: white;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            background-color: black;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .footer-column p, .footer-column a {
+            color: white;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .footer-column a {
+            text-decoration: none;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2024-07-01'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2024-07-02'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <a href="ejemplo6.html">BACK</a>
+    <a href="ejemplo8.html">NEXT</a>
+    <h1 style="font-size:400%;">Insurance</h1>
+    <h3>Learn about the power of insurance and become your own financial superhero!</h3>
+
+    <!-- Second Container: 2 columns -->
+    <div class="container">
+        <h2>Types of Insurances</h2>
+        <p class="text medium">Insurance is a way to protect ourselves from unexpected events or emergencies that might cause financial problems. It's like a safety net that helps us when something unexpected happens!</p>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im17-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Health Insurance</p>
+                <p class="text small">What It Covers: Doctor visits, medicines, hospital stays, and sometimes dental and eye care.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im20-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Cental Insurance</p>
+                <p class="text small">What It Covers: Check-ups, cleanings, and treatments for teeth and gums.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im21-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Life Insurance</p>
+                <p class="text small">What It Covers: This one is a bit different. It provides money to the family if something happens to a parent or guardian.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im19-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Car Insurance</p>
+                <p class="text small">What It Covers: If the family has a car, this insurance helps pay for damages in case of an accident.</p>
+            </div>
+        </div>
+    </div>
+        
+    <div class="container">
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im49-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Travel Insurance</p>
+                <p class="text small">What It Covers: Trip cancellations, medical emergencies, lost baggage, and other travel-related incidents.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im47-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Pet Insurance</p>
+                <p class="text small">What It Covers: Veterinary expenses for pets, including illness and accidents.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im18-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Education Insurance</p>
+                <p class="text small">What It Covers: Investment plans specifically tailored for accumulating funds to cover educational expenses.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im59-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Savings Insurance</p>
+                <p class="text small">What It Covers: Save in another currency to preserve the value of your money, choosing the amount and term of your savings to reach your goal.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif, 'Roboto'; /* Applying custom font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .main-container {
+            background-color: #140221; /* Fondo morado oscuro */
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            display: flex;
+            align-items: center;
+        }
+        .avatar {
+            flex: 1;
+        }
+        .avatar img {
+            max-width: 170px;
+            border-radius: 50%;
+        }
+        .user-details {
+            flex: 6;
+            margin-left: 20px;
+        }
+        .user-details p {
+            margin: 5px 10px;
+        }
+        .user-details button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px; /* Font size */
+            margin-top: 20px; /* Space above the button */
+        }
+        .user-details button:hover {
+            background-color: darkblue;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .box {
+            background-color: #140221; /* Fondo morado oscuro */
+            border-radius: 10px;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .box p {
+            font-size: 16px;
+            margin: 15px 0;
+        }
+        .box button {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+        }
+        .box button:hover {
+            background-color: darkblue;
+        }
+        .text {
+            margin-top: 10px; /* Space between image and text */
+        }
+        .text.small {
+            font-size: 14px; /* Small font size */
+        }
+        .text.medium {
+            font-size: 18px; /* Medium font size */
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            background-color: black;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .footer-column p, .footer-column a {
+            color: white;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .footer-column a {
+            text-decoration: none;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+        .newsletter {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .newsletter h3 {
+            margin-top: 0;
+        }
+        .newsletter input[type="email"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background-color: white;
+        }
+        .back-link {
+            text-decoration: none; /* Remove underline */
+            color: white; /* White text color */
+            background-color: grey; /* Button background color */
+            padding: 10px 20px; /* Button padding */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            display: inline-block; /* Make it a block element */
+            margin-top: 20px; /* Space above the button */
+            }
+            .back-link:hover {
+                background-color: darkgrey; /* Darker grey on hover */
+            }
+            .botini {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+            text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <a href="ejemplo.html">BACK</a>
+    <a href="ejemplo3.html">NEXT</a>
+    <h1 style="font-size:400%;">Welcome!</h1>
+    <h2>Learning to share and expand. </h2>
+    <div class="main-container">
+        <div class="avatar">
+            <img src="trans/im27-Photoroom.png" alt="Avatar">
+            <a class="back-link" href="trans/im27-Photoroom.png">Return</a>
+        </div>
+        <div class="user-details">
+            <p class="text small"><strong>User: </strong> Lea</p>
+            <p class="text small"><strong>Keyname: </strong> LeaTeam</p>
+            <p class="text small"><strong>Posts: </strong> 120</p>
+            <p class="text small"><strong>Notifications: </strong> 15</p>
+            <p class="text small"><strong>Followers: </strong> 300</p>
+            <p class="text small"><strong>Following: </strong> 180</p>
+            <button>Settings</button>
+        </div>
+    </div>
+    <h2>Doing a lot with little things.</h2>
+    <div class="container">
+        <div class="box">
+            <img src="trans/im26-Photoroom.png" alt="Imagen 1">
+            <p class="text medium">Personal Finances</p>
+            <p class="text small">Discover the power of saving, investing, and planning to build a strong and happy financial future</p>
+            <!-- <button>Learn more!</button> -->
+            <a class="botini" href="trans/im26-Photoroom.png">Learn more!</a>
+        </div>
+        <div class="box">
+            <img src="trans/im47-Photoroom.png" alt="Imagen 2">
+            <p class="text medium">Banking</p>
+            <p class="text small">Discover how to make smart financial decisions and build a solid knowledge. Financial education is fun and valuable for a lifetime!</p>
+            <a class="botini" href="trans/im47-Photoroom.png">Learn more!</a>
+        </div>
+        <div class="box">
+            <img src="trans/im60-Photoroom.png" alt="Imagen 3">
+            <p class="text medium">Investment</p>
+            <p class="text small">Explore the exciting world of investments and learn how to make your money work for you from a young age!</p>
+            <a class="botini" href="trans/im60-Photoroom.png">Learn more!</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="box">
+            <img src="trans/im28-Photoroom.png" alt="Imagen 4">
+            <p class="text medium">Credit and Debit</p>
+            <p class="text small">Learn how to use money wisely and make smart financial choices. Building a strong foundation for a bright financial future!</p>
+            <a class="botini" href="trans/im28-Photoroom.png">Learn more!</a>
+        </div>
+        <div class="box">
+            <img src="trans/im36-Photoroom.png" alt="Imagen 5">
+            <p class="text medium">Insurance</p>
+            <p class="text small">Learn about the power of insurance and become your own financial superhero!</p>
+            <a class="botini" href="trans/im36-Photoroom.png">Learn more!</a>
+        </div>
+        <div class="box">
+            <img src="trans/im48-Photoroom.png" alt="Imagen 6">
+            <p class="text medium">Financial Risk</p>
+            <p class="text small">Explore the exciting world of financial risks and learn how to make smart decisions to protect your money. Discover how to become a master of finance from an early age!</p>
+            <a class="botini" href="trans/im48-Photoroom.png">Learn more!</a>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Products</h3>
+            <p><a href="#">Marketing</a></p>
+            <p><a href="#">Sales Solution</a></p>
+            <p><a href="#">Business</a></p>
+            <p><a href="#">Data</a></p>
+            <p><a href="#">Support</a></p>
+            <p><a href="#">Documentation</a></p>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">APIs</a></p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Company</h3>
+            <p><a href="#">About</a></p>
+            <p><a href="#">Team</a></p>
+            <p><a href="#">Careers</a></p>
+            <p><a href="#">News</a></p>
+            <p><a href="#">Legal</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms</a></p>
+        </div>
+
+        <div class="footer-column">
+            <div class="newsletter">
+                <h3>Subscribe to our newsletter</h3>
+                <p>Get the latest product updates and more.</p>
+                <form action="#" method="post">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+</body>
+</html>

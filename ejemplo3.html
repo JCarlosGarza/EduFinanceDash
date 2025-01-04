@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif, 'Roboto'; /* Applying custom font */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            font-size: 36px;
+            margin: 100; /* Remove margin */
+            padding: 0; /* Remove padding */
+        }
+        h3 {
+            font-size: 22px;
+            text-align: center;
+        }
+        .main-container, .container, .row {
+            background-color: black; /* Fondo morado oscuro */
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-container input[type="date"], 
+        .main-container textarea,
+        .main-container button {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+        .main-container button {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        .main-container button:hover {
+            background-color: darkblue;
+        }
+        .calendar {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .col-3, .col-2, .col-4, .col-5 {
+            padding: 20px;
+        }
+        .col-3 {
+            width: calc(33.33% - 40px); /* Tres columnas con espacio entre recuadros */
+        }
+        .col-2 {
+            width: calc(50% - 40px); /* Dos columnas con espacio entre recuadros */
+        }
+        .col-4 {
+            width: calc(25% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .col-5 {
+            width: calc(20% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .box {
+            text-align: center;
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .box p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .text-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .concept-list {
+            list-style: none;
+            padding: 0;
+        }
+        .concept-list li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .box button {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+        }
+        .box button:hover {
+            background-color: darkblue;
+        }
+        .text {
+            margin-top: 10px; /* Space between image and text */
+        }
+        .text.small {
+            font-size: 14px; /* Small font size */
+        }
+        .text.medium {
+            font-size: 18px; /* Medium font size */
+        }
+        
+        
+        .newsletter {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .newsletter h3 {
+            margin-top: 0;
+        }
+        .newsletter input[type="email"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background-color: white;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            background-color: black;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .footer-column p, .footer-column a {
+            color: white;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .footer-column a {
+            text-decoration: none;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+        .containercol {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+        }
+
+    </style>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2024-07-01'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2024-07-02'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <a href="ejemplo2.html">BACK</a>
+    <a href="ejemplo4.html">NEXT</a>
+    <h1 style="font-size:400%;">Investment</h1>
+    <h3>Explore the exciting world of investments and learn how to make your money work for you from a young age!</h3>
+
+    <!-- First Container: Input date, notepad, button to upload images, and a calendar -->
+    <div class="main-container">
+        <input type="date">
+        <textarea placeholder="Which is your new goal? ..." rows="4"></textarea>
+        <button>Load image</button>
+        <div id="calendar" class="calendar"></div>
+    </div>
+
+    <!-- Second Container: 3 columns -->
+    <div class="container">
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im19-Photoroom.png" alt="Imagen">
+                <h2>Stock Exchange</h2>
+                <p class="text medium">The stock exchange is like a marketplace, but instead of buying and selling goods like toys or clothes, people buy and sell parts of companies. These parts are called "stocks" or "shares."</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <ul class="concept-list">
+                <li>Buying and Selling</li>
+                <li>Types of Traders</li>
+                <li>Equity</li>
+                <li>Bonds</li>
+                <li>Derivatives</li>
+                <li>Cryptocurrencies</li>
+                <li>NFTs</li>
+            </ul>
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im59-Photoroom.png" alt="Imagen">
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Container: 2 columns -->
+    <a class="containercol" href="trans/im34-Photoroom.png">
+    <div class="container">
+        <div class="col-2">
+            <div class="box">
+                <img src="trans/im34-Photoroom.png" alt="Imagen">
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="box">
+                <h2>Time Value of Money</h2>
+                <p class="text medium">Key Points for Kids:
+
+                    Time is Like Magic
+                    Choices
+                    Saving is Fun
+                    
+                    So, the time value of money is like a magical game where you decide when to spend and when to save for even more fun in the future!</p>
+            </div>
+        </div>
+    </div>
+    </a>
+
+    <!-- Fourth Container: 2 rows -->
+    <a class="containercol" href="ejemplo8.html">
+    <div class="container">
+            <h2>Buying and Selling</h2>
+            <p class="text medium">The stock exchange is like a marketplace, but instead of buying and selling goods like toys or clothes, people buy and sell parts of companies. These parts are called "stocks" or "shares."</p>
+            <div class="col-4">
+                <div class="box">
+                    <img src="trans/imag11.png" alt="Imagen 1">
+                    <p class="text small">1. Your Magical Candy Stand: Imagine you have a magical stand full of delicious candies. This stand is like a special little shop that you run.</p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="box">
+                    <img src="trans/imag12.png" alt="Imagen 2">
+                    <p class="text small">2. Candies are like Shares: The candies are not just ordinary sweets; they're like pieces of magical companies. Each candy represents a "share" of a company.</p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="box">
+                    <img src="trans/imag13.png" alt="Imagen 3">
+                    <p class="text small">3. Buying Candies - Let's Go Shopping!:
+                        If you want to own a piece of a company, you buy one of its candies. It's like going to the candy market and saying, "I want a share of this magical company!" So, you give the candy shop some coins, and they give you a special candy (share) in return.</p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="box">
+                    <img src="trans/imag14.png" alt="Imagen 4">
+                    <p class="text small">4. Selling Candies - Let's Share the Magic!:
+                        But guess what? If you already have a candy, you can decide to share it with someone else. You might sell the candy to another friend who wants it. So, your friend gives you some coins, and you give them the candy.</p>
+                </div>
+            </div>
+    </div>
+    </a>
+
+    <!-- Five Container: 2 rows -->
+    <a class="containercol" href="ejemplo12.html">
+    <div class="container">
+        <h2>Types of Traders</h2>
+        <p class="text medium">Imagine you and your friends have a bunch of candies. Now, think of traders as Candy Swappers. These are friends who love to trade candies with each other.</p>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im7-Photoroom.png" alt="Imagen 1">
+                <p class="text small">The Patient Penguin:
+                    Penguins are patient, and so is The Patient Penguin trader. They buy stickers and hold onto them for a long time. They wait for the stickers to grow big and strong, just like a penguin waiting for fish.</p>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im5-Photoroom.png" alt="Imagen 2">
+                <p class="text small">The Quick Mover - Speedy Lion Sam:
+                    Speedy Lion Sam is super fast! He buys and sells stickers really quickly. It's like playing a game of catch – grab a sticker, pass it, grab another one. Speedy Sam doesn't keep stickers for long.</p>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im2-Photoroom.png" alt="Imagen 3">
+                <p class="text small">The Ant Collector:
+                    Imagine you love collecting stickers. The Ant Collector trader is like that. They buy lots of different stickers (stocks) because they want to have a big collection.            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im3-Photoroom.png" alt="Imagen 4">
+                <p class="text small">The Explorer - Adventure Dog:
+                    Adventure Dog loves exploring new things. She looks for new stickers in different places (markets) and tries to find rare ones. Sometimes, she discovers a sticker that becomes super valuable!            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im4-Photoroom.png" alt="Imagen 5">
+                <p class="text small">The Share Sharer - Friendly Freddie elephant:
+                    Friendly Freddie likes to share. He buys stickers and shares them with others. If someone needs a special sticker, Freddie might give it to them or trade for something else.            </div>
+        </div>
+    </div>
+    </a>
+
+    <!-- Six Container: 2 rows -->
+    <a class="containercol" href="ejemplo9.html">
+    <div class="container">
+        <h2>Types of Candies: Financial Instruments</h2>
+        <p class="text medium">Financial instruments are various types of contracts or assets (like candies!) that can be traded between parties (like your friends!). This is the reason why they have a price.</p>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im79-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Stocks - Candy Shares:
+                    Imagine stocks as Candy Shares. When you own a Candy Share, you have a piece of a big Candy Company. If the Candy Company does well, your Candy Shares become more valuable. It's like having a share of the magical Candy Market!</p>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im79-Photoroom.png" alt="Imagen 2">
+                <p class="text small">Bonds - Candy IOUs:
+                    Now, think of bonds as Candy IOUs. When you buy a bond, it's like lending money to a Candy Company. In return, they give you a special Candy IOU promising to pay you back with extra candies later.</p>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im79-Photoroom.png" alt="Imagen 3">
+                <p class="text small">Derivatives - Candy Magic Tricks:
+                    Derivatives are like Candy Magic Tricks. They're special contracts that can change in value based on the Candy Market's movements. It's like a magical game where the value of your Candy Magic Trick can go up or down.</div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im79-Photoroom.png" alt="Imagen 4">
+                <p class="text small">Crypto - Magic Candy Coins:
+                    Crypto is like Magic Candy Coins. Instead of regular coins, these are special digital coins that you can use to buy candies in the magical Candy Market. Each coin is like a magical token in the digital world!</div>
+        </div>
+        <div class="col-5">
+            <div class="box">
+                <img src="trans/im79-Photoroom.png" alt="Imagen 5">
+                <p class="text small">NFTs - Unique Candy Art:
+                    NFTs (Non-Fungible Tokens) are like Unique Candy Art. Imagine each piece of candy having its special art or flavor. NFTs are unique digital tokens that show you own a one-of-a-kind piece of Candy Art in the digital world.</div>
+        </div>
+    </div>
+    </a>
+
+</body>
+</html>

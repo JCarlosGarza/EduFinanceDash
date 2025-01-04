@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif, 'Roboto'; /* Applying custom font */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            font-size: 36px;
+            margin: 100; /* Remove margin */
+            padding: 0; /* Remove padding */
+        }
+        h3 {
+            font-size: 22px;
+            text-align: center;
+        }
+        .main-container, .container, .row {
+            background-color: black; /* Fondo morado oscuro */
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-container input[type="date"], 
+        .main-container textarea,
+        .main-container button {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+        .main-container button {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        .main-container button:hover {
+            background-color: darkblue;
+        }
+        .calendar {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .col-3, .col-2, .col-4, .col-5 {
+            padding: 20px;
+        }
+        .col-3 {
+            width: calc(33.33% - 40px); /* Tres columnas con espacio entre recuadros */
+        }
+        .col-2 {
+            width: calc(50% - 40px); /* Dos columnas con espacio entre recuadros */
+        }
+        .col-4 {
+            width: calc(25% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .col-5 {
+            width: calc(20% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .boxpass {
+            text-align: center;
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .box p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .text-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .concept-list {
+            list-style: none;
+            padding: 0;
+        }
+        .concept-list li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .box button {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+        }
+        .box button:hover {
+            background-color: darkblue;
+        }
+        .text {
+            margin-top: 10px; /* Space between image and text */
+        }
+        .text.small {
+            font-size: 14px; /* Small font size */
+        }
+        .text.medium {
+            font-size: 18px; /* Medium font size */
+        }
+        
+        
+        .newsletter {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .newsletter h3 {
+            margin-top: 0;
+        }
+        .newsletter input[type="email"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background-color: white;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            background-color: black;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .footer-column p, .footer-column a {
+            color: white;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .footer-column a {
+            text-decoration: none;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+        .containercol {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+        }
+
+
+    </style>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2024-07-01'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2024-07-02'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <a href="ejemplo3.html">BACK</a>
+    <a href="ejemplo5.html">NEXT</a>
+    <h1 style="font-size:400%;">Personal Finance</h1>
+    <h3>Discover the power of saving, investing, and planning to build a strong and happy financial future</h3>
+
+    <!-- First Container: Input date, notepad, button to upload images, and a calendar -->
+    <div class="main-container">
+        <input type="date">
+        <textarea placeholder="Which is your new goal? ..." rows="4"></textarea>
+        <button>Load image</button>
+        <div id="calendar" class="calendar"></div>
+    </div>
+
+    
+
+    <!-- Second Container: 3 columns -->
+    <a class="containercol" href="ejemplo12.html">
+    <div class="container">
+        <h2>Savings, Costs and Spending</h2>
+        <p class="text medium">Saving is like keeping a treasure for later adventures. Costs are the coins you trade for things you need. Spending is using your coins to make your day special and exciting.</p>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im60-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Savings: is like collecting your magic coins in a special account bank. When you get extra coins, you put them in your account bank for later. It's like a treasure chest for your future adventures!</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im72.png" alt="Imagen 2">
+                <p class="text small">Costs: are like the magic coins you spend on things you need. When you want to buy something, you use your magic coins to pay for it. It's like trading your coins for something you like or need.</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im71.png" alt="Imagen 3">
+                <p class="text small">Spending: is when you use your magic coins to get something special or do fun activities. It's like sharing your coins to make your day more exciting. Spelling is about using your coins wisely!</p>
+            </div>
+        </div>
+    </div>
+    </a>
+
+    <!-- Third Container: 3 columns -->
+
+    <div class="container">
+        <h2>Distributions in the time...</h2>
+        <p class="text medium">Let's see how your savings, costs, and spending look over time so we can make better decisions!</p>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im70.png" alt="Imagen 1">
+                <p class="text small">Savings: Imagine your account bank as a treasure chest. Save some magic coins in there for future adventures or something special you really want.</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/rgi15.png" alt="Imagen 2">
+                <p class="text small">Costs: Use your magic coins wisely. Only spend them on things you really need, like school supplies or a new game to play with friends.</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/rgi16.png" alt="Imagen 3">
+                <p class="text small">Spelling: It's fun to share your magic coins! But make sure to spend them on experiences that make you happy, like a day at the park or a sweet treat.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Fourth Container: 2 rows -->
+    <a class="containercol" href="">
+    <div class="container">
+        <h2>Let's go for that goal!</h2>
+        <p class="text medium">Sometimes, projects can feel like an exciting puzzle. Each piece is an adventure, and I know it can be challenging at times. But remember, you are the brave adventurers in this story! Here are some magical words to keep in mind when things get a bit tough: Persistency, Imagination and Teamwork!</p>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im49-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Step 1: Decide what you want to achieve. It could be finishing a drawing, completing a puzzle, or learning something new. Setting a goal gives you a clear target.</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im17-Photoroom.png" alt="Imagen 2">
+                <p class="text small">Step 2: Think about the steps you need to take to reach your goal. Break it down into smaller tasks. For example, if your goal is to finish a drawing, the tasks could be sketching, coloring, and adding details.</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <img src="trans/im43-Photoroom.png" alt="Imagen 3">
+                <p class="text small">Step 3: Don't feel rushed. Take your time and complete one task at a time. Celebrate each small achievement along the way. This makes the journey more fun and helps you stay motivated.</p>
+            </div>
+        </div>
+    </div>
+    </a>
+
+</body>
+</html>

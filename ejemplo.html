@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Black Background with Images and Custom Font</title>
+        <!-- Link to Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        <style>
+            body {
+                background-color: black;
+                color: white;
+                font-family: 'Roboto', sans-serif; /* Applying custom font */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                min-height: 100vh;
+                margin: 10;
+            }
+            h1 {
+            font-weight: 1100; /* Bold for heading */
+            margin: 0; /* Remove margin */
+            padding: 0; /* Remove padding */
+            }
+            p {
+            font-size: 18px;
+            margin: 50; /* Remove margin */
+            padding: 0; /* Remove padding */
+            }
+            .nin1 {
+                width: 40px; /* Set the desired width for the first image */
+                height: 40px; /* Maintain aspect ratio */
+            }
+            .image2 {
+                width: 200px; /* Set the desired width for the second image */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .image3 {
+                width: 400px; /* Set the desired width for the third image */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .botini {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+            text-decoration: none;
+            }
+            .button:hover {
+                background-color: darkblue; /* Darker blue on hover */
+            }
+            h2 {
+            font-size: 36px;
+            margin: 100; /* Remove margin */
+            padding: 0; /* Remove padding */
+            }
+            .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+            gap: 50px;
+            width: 70%; /* Adjust as needed */
+            max-width: 1200px; /* Adjust as needed */
+            }
+            .column {
+            flex: 1;
+            margin: 10px;
+            justify-content: center;
+            align-items: center; /* Center the content vertically */
+            flex-direction: column; /* Align items in a column */
+            text-align: center; /* Center text */
+            }
+            .column img {
+                width: 50%;
+                display: block;
+                border-radius: 25px; /* Rounded corners */
+                height: auto;
+                margin-left: 23%; /* Move images to the right */
+            }
+            .text {
+                margin-top: 10px; /* Space between image and text */
+            }
+            .text.small {
+                font-size: 14px; /* Small font size */
+            }
+            .text.medium {
+                font-size: 18px; /* Medium font size */
+            }
+            h3 {
+            font-size: 36px; /* Bold for heading */
+            margin: 100; /* Remove margin */
+            padding: 0; /* Remove padding */
+            }
+            .login-container {
+            background-color: #112171;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .login-container h2 {
+                color: white;
+            }
+            .login-container label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            .login-container input[type="text"], .login-container input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .login-container button {
+                background-color: white;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                width: 100%;
+            }
+            .login-container button:hover {
+                background-color: white;
+            }
+            .login-options {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .login-options input[type="checkbox"] {
+                margin-right: 5px;
+            }
+            .login-links {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+            }
+            .login-links a {
+                color: white;
+                text-decoration: none;
+            }
+            .login-links a:hover {
+                text-decoration: underline;
+            }
+            .footer-container {
+                display: flex;
+                justify-content: space-around;
+                width: 90%;
+                max-width: 1200px;
+                margin-top: 20px;
+            }
+            .footer-column {
+                flex: 1;
+                background-color: black;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 10px;
+                text-align: left;
+            }
+            .footer-column h3 {
+                color: white;
+                margin-bottom: 10px;
+            }
+            .footer-column p, .footer-column a {
+                color: white;
+                font-size: 16px;
+                margin: 5px 0;
+            }
+            .footer-column a {
+                text-decoration: none;
+            }
+            .footer-column a:hover {
+                text-decoration: underline;
+            }
+            .newsletter {
+                background-color: black;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: left;
+                margin-top: 20px;
+            }
+            .newsletter h3 {
+                margin-top: 0;
+            }
+            .newsletter input[type="email"] {
+                width: calc(100% - 30px);
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .newsletter button {
+                background-color: blue;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .newsletter button:hover {
+                background-color: white;
+            }
+        
+        </style>
+
+
+
+<script type="javascript">
+    function irPaginaSiguiente() {
+        window.location.href = "/ejemplo2.html";
+    }
+</script>
+
+    </head>
+<body>
+    <a href="index.html">HOME</a>
+    <a href="ejemplo12.html">BACK</a>
+    <a href="ejemplo2.html">NEXT</a>
+    <h1 style="font-size:400%;">Bring your vision to life</h1>
+    <p>Learning to share and expand. Doing a lot with little things.</p>
+    <img src="trans/im26-Photoroom.png" alt="Image 1" width="180" height="300">
+    <!-- <a class="botini" href="#target-section">Get to know us!</a> -->
+    <a class="botini">Get to know us!</a>
+    
+    <h2>Knowledge, fun and finance</h2>
+    <div class="container">
+        <div class="column">
+            <img src="trans/im28-Photoroom.png" alt="Image 1" width="190" height="150">
+            <p class="text large">Demonstrate your knowledge</p>
+            <p class="text small">Learn to use money wisely; it's the secret to building your dreams.</p>
+        </div>
+        <div class="column">
+            <img src="trans/im47-Photoroom.png" alt="Image 2" width="240" height="150">
+            <p class="text large">Learn in a fun way</p>
+            <p class="text small">Discover the joy of learning about finances and building your own path to financial responsibility.</p>
+        </div>
+        <div class="column">
+            <img src="trans/im27-Photoroom.png" alt="Image 3" width="190" height="150">
+            <p class="text large">Smart finances</p>
+            <p class="text small">Remember that money is a means to larger goals.</p>
+        </div>
+    </div>
+    <h3 id="target-section">Join a thriving community at R</h3>
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form action="#" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="login-options">
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="login-links">
+            <a href="#">Create account</a>
+        </div>
+    </div>
+ 
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Products</h3>
+            <p><a href="#">Marketing</a></p>
+            <p><a href="#">Sales Solution</a></p>
+            <p><a href="#">Business</a></p>
+            <p><a href="#">Data</a></p>
+            <p><a href="#">Support</a></p>
+            <p><a href="#">Documentation</a></p>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">APIs</a></p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Company</h3>
+            <p><a href="#">About</a></p>
+            <p><a href="#">Team</a></p>
+            <p><a href="#">Careers</a></p>
+            <p><a href="#">News</a></p>
+            <p><a href="#">Legal</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms</a></p>
+        </div>
+
+        <div class="footer-column">
+            <div class="newsletter">
+                <h3>Subscribe to our newsletter</h3>
+                <p>Get the latest product updates and more.</p>
+                <form action="#" method="post">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+</body>
+</html>

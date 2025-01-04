@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif, 'Roboto'; /* Applying custom font */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            font-size: 36px;
+            margin: 100; /* Remove margin */
+            padding: 0; /* Remove padding */
+        }
+        h3 {
+            font-size: 22px;
+            text-align: center;
+        }
+        .main-container, .container, .row {
+            background-color: black; /* Fondo morado oscuro */
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-container input[type="date"], 
+        .main-container textarea,
+        .main-container button {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+        .main-container button {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        .main-container button:hover {
+            background-color: darkblue;
+        }
+        .calendar {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .col-3, .col-2, .col-4, .col-8 {
+            padding: 20px;
+        }
+        .col-3 {
+            width: calc(33.33% - 40px); /* Tres columnas con espacio entre recuadros */
+        }
+        .col-2 {
+            width: calc(50% - 40px); /* Dos columnas con espacio entre recuadros */
+        }
+        .col-4 {
+            width: calc(25% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .col-8 {
+            width: calc(20% - 40px); /* Cuatro columnas con espacio entre recuadros */
+        }
+        .box {
+            text-align: center;
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .box p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .text-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .concept-list {
+            list-style: none;
+            padding: 0;
+        }
+        .concept-list li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .box button {
+            background-color: blue; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 20px; /* Space above the button */
+        }
+        .box button:hover {
+            background-color: darkblue;
+        }
+        .text {
+            margin-top: 10px; /* Space between image and text */
+        }
+        .text.small {
+            font-size: 14px; /* Small font size */
+        }
+        .text.medium {
+            font-size: 18px; /* Medium font size */
+        }
+        
+        
+        .newsletter {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .newsletter h3 {
+            margin-top: 0;
+        }
+        .newsletter input[type="email"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background-color: white;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            background-color: black;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .footer-column p, .footer-column a {
+            color: white;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .footer-column a {
+            text-decoration: none;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2024-07-01'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2024-07-02'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <a href="ejemplo5.html">BACK</a>
+    <a href="ejemplo7.html">NEXT</a>
+    <h1 style="font-size:400%;">Credit and Debit</h1>
+    <h3>Understanding Credit and Debt: Learn how to use money wisely and make smart financial choices. Building a strong foundation for a bright financial future!</h3>
+
+    <!-- Second Container: 2 columns -->
+    <div class="container">
+        <h2>Types of Cards</h2>
+        <p class="text medium">Credit and debit cards are financial tools designed to help children and teenagers learn about money management in a controlled and supervised environment.</p>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im98-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Basic Debit Card</p>
+                <p class="text small">Features:
+                    - Linked to a parent's account.
+                    - Limited spending controls and allowances set by parents.
+                    - No overdraft protection.
+                    - Real-time parental monitoring through apps.
+                    - Educational tools for basic financial lessons.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im99-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Intermediate Debit Card</p>
+                <p class="text small">Features:
+                    - Increased spending limits.
+                    - Parental controls for online and in-store purchases.
+                    - Introduction of basic ATM access (with withdrawal limits).
+                    - Enhanced educational resources for financial literacy.
+                    - Some customization options for parents to tailor features.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im100-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Advance Debit Card</p>
+                <p class="text small">Features:
+                    - Higher spending limits and responsibility.
+                    - More flexibility in ATM access.
+                    - Introduction of features like savings goals and budgeting tools.
+                    - Parental oversight remains, but with gradual independence.
+                    - Advanced financial education resources.</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <img src="trans/im101-Photoroom.png" alt="Imagen 1">
+                <p class="text small">Customizable Debit Card</p>
+                <p class="text small">Features:
+                    - Customizable features based on individual financial goals.
+                    - Higher spending limits and fewer restrictions.
+                    - Full ATM access and management of their accounts.
+                    - Integration with mobile banking apps for seamless control.
+                    - Continued focus on financial literacy and advanced money management.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
